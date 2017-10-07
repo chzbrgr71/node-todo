@@ -1,0 +1,10 @@
+name: nodetodo
+version: 0.0.1
+appVersion: 1.0
+description: node.js app with CosmosDB backend
+keywords:
+- nodejs
+- cosmosdb
+maintainers: 
+  - name: chzbrgr71
+    email: brianisrunning@gmail.com

@@ -1,0 +1,16 @@
+## Container
+image: chzbrgr71/nodetodo
+imagePullPolicy: IfNotPresent
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 300m
+
+## Service configuration
+serviceType: LoadBalancer
+port: 8080
+containerPort: 8080
+
+## CosmosDB config
+resourceGroup: serv-broker-cosmos2
+location: westus

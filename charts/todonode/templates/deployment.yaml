@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}
+    spec:
+      containers:
+      - name: {{ template "fullname" . }}
+        image: "{{ .Values.image }}"
+        imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
+        env:
+        - name: COSMOSDB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-cosmosdb-secret
+              key: uri
+        - name: COSMOS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-cosmosdb-secret
+              key: primarykey
+        ports:
+        - name: http
+          containerPort: 8080
