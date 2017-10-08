@@ -12,5 +12,5 @@ port: 8080
 containerPort: 8080
 
 ## CosmosDB config
-resourceGroup: serv-broker-cosmos2
+resourceGroup: serv-broker-cosmos
 location: westus
