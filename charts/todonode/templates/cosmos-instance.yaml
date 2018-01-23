@@ -1,4 +1,4 @@
-apiVersion: servicecatalog.k8s.io/v1alpha1
+apiVersion: servicecatalog.k8s.io/v1beta1
 kind: ServiceInstance
 metadata:
   name: {{ template "fullname" . }}-cosmosdb-instance
@@ -8,8 +8,8 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
-  serviceClassName: azure-document-db
-  planName: DocumentDB
+  clusterServiceClassExternalName: azure-cosmos-document-db
+  clusterServicePlanExternalName: document-db
   parameters:
     location: "{{ .Values.location }}"
     resourceGroup: "{{ .Values.resourceGroup }}"
